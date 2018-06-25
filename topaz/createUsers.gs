@@ -6,9 +6,15 @@ run
   newUser := AllUsers userWithId: userId ifAbsent: [ nil ].
   newUser
     ifNil: [
-      (AllUsers 
+      | securityPolicy |
+      securityPolicy := GsObjectSecurityPolicy new
+	ownerAuthorization: #write;
+	yourself.
+      System commit.
+      newUser := (AllUsers 
         addNewUserWithId: userId
-        password: 'swordfish')
+        password: 'swordfish'
+	defaultObjectSecurityPolicy: securityPolicy)
         addPrivilege: #CodeModification;
         addPrivilege: #UserPassword;
         addPrivilege: #OtherPassword;
@@ -17,8 +23,8 @@ run
         addPrivilege: #SessionAccess;
         addPrivilege: #FileControl;
         addPrivilege: #SessionPriority;
-        addGroup: 'DataCuratorGroup';
-        yourself ].
+        yourself.
+      securityPolicy owner: newUser ].
   System commit ].
 %
 
@@ -36,7 +42,7 @@ run
         | newDict size session |
         newDict := SymbolDictionary new
             name: (userId, index printString) asSymbol;
-            objectSecurityPolicy: symbolList objectSecurityPolicy;
+            objectSecurityPolicy: userProfile defaultObjectSecurityPolicy;
             yourself.
         symDicts add: newDict.
         size := System myUserProfile symbolList size.
