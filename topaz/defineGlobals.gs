@@ -3,6 +3,6 @@ run
   UserGlobals 
     at: #'RowanSample5_userids' put: #('Red' 'Yellow' 'Blue');
     yourself
-  System commit
 %
+commit
 
