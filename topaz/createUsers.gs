@@ -1,17 +1,17 @@
 
 run
-  ('SharedReaders' in: AllGroups)
-    ifFalse: [AllGroups add: 'SharedReaders' ].
   RowanSample5_userids
   do: [:userId |
   | newUser |
   newUser := AllUsers userWithId: userId ifAbsent: [ nil ].
   newUser
     ifNil: [
-      | securityPolicy |
+      | securityPolicy worldAuthorization |
+      worldAuthorization := #read.
+      userId = 'Dark' ifTrue: [ worldAuthorization := #none ].
       securityPolicy := GsObjectSecurityPolicy new
 	ownerAuthorization: #write;
-	group: 'SharedReaders' authorization: #read;
+	worldAuthorization: worldAuthorization;
 	yourself.
       System commit.
       newUser := AllUsers 
@@ -26,7 +26,7 @@ run
         'SessionAccess'
         'FileControl'
         'SessionPriority')
-        inGroups: #('SharedReaders').
+	inGroups: #().
       securityPolicy owner: newUser ].
   System commit ].
 %
@@ -56,16 +56,21 @@ run
   RowanSample5_userids
     do: [:userId |
       symDicts do: [:newDict |
-        | size userProfile symbolList |
-        userProfile := AllUsers userWithId: userId.
-        symbolList := userProfile symbolList.
-	GsObjectSecurityPolicy 
-	  setCurrent: userProfile defaultObjectSecurityPolicy 
-	    while: [
-       	      size := symbolList size.
-              userProfile insertDictionary: newDict at: size + 1.
-	      (userProfile objectNamed: 'UserGlobals')
-		at: #rowanCompile put: true. ] ] ].
+	| darkDict |
+        "'Dark' symbol dicts only added to 'Dark' user"
+        darkDict := (newDict name asString indexOfSubCollection: 'Dark' startingAt: 1) = 1.
+	darkDict not | (darkDict & (userId = 'Dark'))
+	  ifTrue: [ 
+            | size userProfile symbolList |
+            userProfile := AllUsers userWithId: userId.
+            symbolList := userProfile symbolList.
+	    GsObjectSecurityPolicy 
+	      setCurrent: userProfile defaultObjectSecurityPolicy 
+	        while: [
+       	          size := symbolList size.
+                  userProfile insertDictionary: newDict at: size + 1.
+	          (userProfile objectNamed: 'UserGlobals')
+		    at: #rowanCompile put: true. ] ] ] ].
 %
 commit
 
