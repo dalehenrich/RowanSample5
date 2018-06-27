@@ -59,13 +59,11 @@ run
 	  setCurrent: userProfile defaultObjectSecurityPolicy 
 	    while: [
 	      #( 1 2 3 ) do: [:index |
-              | newDict size session |
+              | newDict session |
               newDict := SymbolDictionary new
                   name: (userId, index printString) asSymbol;
                   objectSecurityPolicy: userProfile defaultObjectSecurityPolicy;
                   yourself.
-              size := symbolList size.
-              userProfile insertDictionary: newDict at: size + 1.
               userCat = 'dev'
                 ifTrue: [ devSymDicts add: newDict ].
               userCat = 'private'
@@ -81,9 +79,11 @@ run
         at: #rowanCompile put: true.
       "all users get the sharedSymbolDicts added to their list"
       symbolList := userProfile symbolList.
-      symDicts := devSymDicts copy.
+      symDicts := devSymDicts.
       userCat = 'super'
-        ifTrue: [ symDicts addAll: privateSymDicts ].
+        ifTrue: [ 
+          symDicts := devSymDicts copy.
+          symDicts addAll: privateSymDicts ].
       GsObjectSecurityPolicy 
         setCurrent: userProfile defaultObjectSecurityPolicy 
         while: [
