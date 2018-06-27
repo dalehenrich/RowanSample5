@@ -2,7 +2,7 @@
 run
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
-    usercat ~= 'gemstone' ifTrue: [
+    userCat ~= 'gemstone' ifTrue: [
     userIdList do: [:userId |
       | newUser |
       newUser := AllUsers userWithId: userId ifAbsent: [ nil ].
@@ -70,7 +70,7 @@ run
       GsObjectSecurityPolicy 
 	  setCurrent: userProfile defaultObjectSecurityPolicy 
 	    while: [
-	      #( 1 2 3 ) do: [:index |
+	      #( 1 "2 3" ) do: [:index |
               | newDict session |
               newDict := SymbolDictionary new
                   name: (userId, index printString) asSymbol;
@@ -100,7 +100,7 @@ run
             ifTrue: [ 
               symDicts := devSymDicts copy.
               symDicts addAll: privateSymDicts ].
-          (userId = RowanSample5_ApplicationCurator or: [ userId = 'SystemUser' ])
+          userId = RowanSample5_ApplicationCurator
             ifTrue: [ symDicts addAll: systemSymDicts ] ].
       GsObjectSecurityPolicy 
         setCurrent: userProfile defaultObjectSecurityPolicy 
