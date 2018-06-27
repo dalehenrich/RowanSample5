@@ -1,0 +1,26 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_dark',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'dark' : {
+				#packageNames : [
+				]
+				},
+			'dark_globals' : {
+				#packageNames : [
+				]
+				}
+			}
+		}
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'' : { 'symbolDictName' : 'Dark1' }
+					}
+				}
+			}
+		},
+	#comment : 'Dark user config'
+}

@@ -2,14 +2,23 @@
 	#name : 'Load',
 	#version : '0.1.0',
 	#definedGroupNames : {
-		'Application' : ['Users', 'Globals' ],
-		'Users'       : ['red', 'yellow', 'blue', 'dark' ],
-		'Globals'     : [ 'globals' ],
+		'Application' : [ 'Users', 'Globals' ],
+		'Users'       : [ 'red', 'yellow', 'blue', 'dark' ],
+		'Globals'     : [ 'red_globals', 'yellow_globals', 'blue_globals', 'dark_globals' ],
 		'red' : [],
 		'yellow' : [],
 		'blue' : [],
 		'dark' : [],
-		'globals' : [],
-		}
-	#comment : 'development config'
+		'red_globals' : [],
+		'yellow_globals' : [],
+		'blue_globals' : [],
+		'dark_globals' : []
+		},
+	#configurationNames : [ 
+		'Load_red', 
+		'Load_yellow',
+		'Load_blue',
+		'Load_dark',
+		],
+	#comment : 'top-level config'
 }

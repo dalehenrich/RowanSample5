@@ -1,0 +1,26 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_red',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'red' : {
+				#packageNames : [
+				]
+				},
+			'red_globals' : {
+				#packageNames : [
+				]
+				}
+			}
+		}
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'' : { 'symbolDictName' : 'Red1' }
+					}
+				}
+			}
+		},
+	#comment : 'Red user config'
+}

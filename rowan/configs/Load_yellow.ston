@@ -1,0 +1,26 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_yellow',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'yellow' : {
+				#packageNames : [
+				]
+				},
+			'yellow_globals' : {
+				#packageNames : [
+				]
+				}
+			}
+		}
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'' : { 'symbolDictName' : 'Yellow1' }
+					}
+				}
+			}
+		},
+	#comment : 'Yellow user config'
+}

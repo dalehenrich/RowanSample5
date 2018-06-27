@@ -1,0 +1,26 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_blue',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'blue' : {
+				#packageNames : [
+				]
+				},
+			'blue_globals' : {
+				#packageNames : [
+				]
+				}
+			}
+		}
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'' : { 'symbolDictName' : 'Blue1' }
+					}
+				}
+			}
+		},
+	#comment : 'Blue user config'
+}
