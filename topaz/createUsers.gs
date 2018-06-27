@@ -37,24 +37,19 @@ run
   (AllGroups includes: 'GlobalsModificationGroup')
     ifFalse: [AllGroups add: 'GlobalsModificationGroup' ].
   SystemObjectSecurityPolicy group: 'GlobalsModificationGroup' authorization: #write.
-  (AllUsers userWithId: 'GlobalsCurator') addGroup: 'GlobalsModificationGroup'.
-%
-commit
 
-run
-  | userProfile |
-  userProfile := AllUsers userWithId: 'ApplicationCurator'.
   (AllGroups includes: 'ApplicationModificationGroup')
     ifFalse: [AllGroups add: 'ApplicationModificationGroup' ].
   SystemRepository do: [:securityPolicy |
-    userProfile userId ~= securityPolicy owner userId
-      ifTrue: [ 
-        (RowanSample5_allUserIds includes: securityPolicy owner userId)
-          ifTrue: [ securityPolicy group: 'ApplicationModificationGroup' authorization: #write ] ] ].
-  userProfile 
+    (RowanSample5_devUserIds includes: securityPolicy owner userId)
+      ifTrue: [ securityPolicy group: 'ApplicationModificationGroup' authorization: #write ] ].
+
+  (AllUsers userWithId: RowanSample5_ApplicationCurator) 
     addGroup: 'GlobalsModificationGroup';
     addGroup: 'ApplicationModificationGroup';
     yourself.
+  (AllUsers userWithId: RowanSample5_GlobalsCurator) addGroup: 'GlobalsModificationGroup'.
+  (AllUsers userWithId: RowanSample5_UserCurator) addGroup: 'ApplicationModificationGroup'.
 %
 commit
 
@@ -98,13 +93,13 @@ run
       userId = RowanSample5_GlobalsCurator
         ifTrue: [ symDicts := systemSymDicts ]
         ifFalse: [  
-          "all users except 'GlobalsCurator', get the sharedSymbolDicts added to their list"
+          "all users except RowanSample5_GlobalsCurator, get the sharedSymbolDicts added to their list"
           symDicts := devSymDicts.
           userCat ~= 'dev' "assuming only one private user --- private users cannot share with other"
             ifTrue: [ 
               symDicts := devSymDicts copy.
               symDicts addAll: privateSymDicts ].
-          userCat = 'super'
+          userId = RowanSample5_ApplicationCurator
             ifTrue: [ symDicts addAll: systemSymDicts ] ].
       GsObjectSecurityPolicy 
         setCurrent: userProfile defaultObjectSecurityPolicy 

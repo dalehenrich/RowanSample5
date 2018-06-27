@@ -1,0 +1,14 @@
+ RwProjectLoadConfiguration{
+	#name : 'Load',
+	#version : '0.1.0',
+	#definedGroupNames : {
+		'core' : [] ]
+		},
+	#configurationNames : [ 
+		'Load_red', 
+		'Load_yellow',
+		'Load_blue',
+		'Load_dark',
+		],
+	#comment : 'top-level config for RowanSample5 project'
+}
