@@ -80,7 +80,7 @@ run
       "all users get the sharedSymbolDicts added to their list"
       symbolList := userProfile symbolList.
       symDicts := devSymDicts.
-      userCat = 'super'
+      userCat ~= 'dev' "assuming only one private user --- private users cannot share with other"
         ifTrue: [ 
           symDicts := devSymDicts copy.
           symDicts addAll: privateSymDicts ].
