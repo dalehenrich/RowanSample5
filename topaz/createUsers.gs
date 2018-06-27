@@ -2,6 +2,7 @@
 run
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
+    usercat ~= 'gemstone' ifTrue: [
     userIdList do: [:userId |
       | newUser |
       newUser := AllUsers userWithId: userId ifAbsent: [ nil ].
@@ -29,7 +30,7 @@ run
               'SessionPriority')
 	    inGroups: #().
           securityPolicy owner: newUser ].
-      System commit ] ].
+      System commit ] ] ].
 %
 commit
 
@@ -59,7 +60,7 @@ run
   privateSymDicts := {}.
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
-    userCat ~= 'super' ifTrue: [
+    (#('super' 'system') includes: userCat) ifFalse: [
     "super users do not have their own symbol dictionaries"
     userIdList
     do: [:userId |
@@ -99,7 +100,7 @@ run
             ifTrue: [ 
               symDicts := devSymDicts copy.
               symDicts addAll: privateSymDicts ].
-          userId = RowanSample5_ApplicationCurator
+          (userId = RowanSample5_ApplicationCurator or: [ userId = 'SystemUser' ])
             ifTrue: [ symDicts addAll: systemSymDicts ] ].
       GsObjectSecurityPolicy 
         setCurrent: userProfile defaultObjectSecurityPolicy 
