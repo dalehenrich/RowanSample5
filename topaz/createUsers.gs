@@ -43,8 +43,9 @@ run
 %
 
 run
-  | sharedSymDicts |
-  sharedSymDicts := {}.
+  | devSymDicts privateSymDicts |
+  devSymDicts := {}.
+  privateSymDicts := {}.
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
     userCat ~= 'super' ifTrue: [
@@ -66,24 +67,27 @@ run
               size := symbolList size.
               userProfile insertDictionary: newDict at: size + 1.
               userCat = 'dev'
-              ifTrue: [
-                "only dev users' symbol dicts shared" 
-                sharedSymDicts add: newDict ] ] ] ] ] ].
+                ifTrue: [ devSymDicts add: newDict ].
+              userCat = 'private'
+                ifTrue: [ privateSymDicts add: newDict ] ] ] ] ] ].
 
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
    userIdList do: [:userId |
-      | userProfile symbolList |
+      | userProfile symbolList symDicts |
       "Needed to be able to use Jadeite ... in the short term"
       userProfile := AllUsers userWithId: userId.
       (userProfile objectNamed: 'UserGlobals')
         at: #rowanCompile put: true.
       "all users get the sharedSymbolDicts added to their list"
       symbolList := userProfile symbolList.
+      symDicts := devSymDicts copy.
+      userCat = 'super'
+        ifTrue: [ symDicts addAll: privateSymDicts ].
       GsObjectSecurityPolicy 
         setCurrent: userProfile defaultObjectSecurityPolicy 
         while: [
-          sharedSymDicts do: [:newDict |
+          symDicts do: [:newDict |
             | size  |
        	    size := symbolList size.
               userProfile insertDictionary: newDict at: size + 1 ] ] ] ].
