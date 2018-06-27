@@ -88,21 +88,24 @@ run
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
    userIdList do: [:userId |
-      | userProfile symbolList symDicts |
+      | userProfile symbolList symDicts systemSymDicts |
       "Needed to be able to use Jadeite ... in the short term"
       userProfile := AllUsers userWithId: userId.
       (userProfile objectNamed: 'UserGlobals')
         at: #rowanCompile put: true.
       symbolList := userProfile symbolList.
+      systemSymDicts := { RowanKernel. RowanLoader. RowanTools }.
       userId = RowanSample5_GlobalsCurator
-        ifTrue: [ symDicts := { RowanKernel. RowanLoader. RowanTools } ]
+        ifTrue: [ symDicts := systemSymDicts ]
         ifFalse: [  
           "all users except 'GlobalsCurator', get the sharedSymbolDicts added to their list"
           symDicts := devSymDicts.
           userCat ~= 'dev' "assuming only one private user --- private users cannot share with other"
             ifTrue: [ 
               symDicts := devSymDicts copy.
-              symDicts addAll: privateSymDicts ] ].
+              symDicts addAll: privateSymDicts ].
+          userCat = 'super'
+            ifTrue: [ symDicts addAll: systemSymDicts ] ].
       GsObjectSecurityPolicy 
         setCurrent: userProfile defaultObjectSecurityPolicy 
         while: [
