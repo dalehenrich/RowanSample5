@@ -14,6 +14,9 @@ run
   UserGlobals 
     at: #'RowanSample5_allUserIds'
     put: allUserIds.
+  UserGlobals
+    at: #'RowanSample5_GlobalsCurator'
+    put:  'GlobalsCurator'
 %
 commit
 
