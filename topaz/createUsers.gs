@@ -1,12 +1,5 @@
 
 run
-  (AllGroups includes: 'GlobalsModificationGroup')
-    ifFalse: [AllGroups add: 'GlobalsModificationGroup' ].
-  SystemObjectSecurityPolicy group: 'GlobalsModificationGroup' authorization: #write.
-  System commitTransaction.
-%
-
-run
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
     userIdList do: [:userId |
@@ -14,7 +7,7 @@ run
       newUser := AllUsers userWithId: userId ifAbsent: [ nil ].
       newUser
         ifNil: [
-          | securityPolicy worldAuthorization groups |
+          | securityPolicy worldAuthorization |
           worldAuthorization := #read.
           userCat = 'private' ifTrue: [ worldAuthorization := #none ].
           securityPolicy := GsObjectSecurityPolicy new
@@ -22,9 +15,6 @@ run
 	    worldAuthorization: worldAuthorization;
 	    yourself.
           System commit.
-          groups := userCat = 'super'
-            ifTrue: [ #('GlobalsModificationGroup') ]
-            ifFalse: [ #() ].
            newUser := AllUsers 
             addNewUserWithId: userId
             password: 'swordfish'
@@ -37,10 +27,36 @@ run
               'SessionAccess'
               'FileControl'
               'SessionPriority')
-	    inGroups: groups.
+	    inGroups: #().
           securityPolicy owner: newUser ].
       System commit ] ].
 %
+commit
+
+run
+  (AllGroups includes: 'GlobalsModificationGroup')
+    ifFalse: [AllGroups add: 'GlobalsModificationGroup' ].
+  SystemObjectSecurityPolicy group: 'GlobalsModificationGroup' authorization: #write.
+  (AllUsers userWithId: 'GlobalsCurator') addGroup: 'GlobalsModificationGroup'.
+%
+commit
+
+run
+  | userProfile |
+  userProfile := AllUsers userWithId: 'ApplicationCurator'.
+  (AllGroups includes: 'ApplicationModificationGroup')
+    ifFalse: [AllGroups add: 'ApplicationModificationGroup' ].
+  SystemRepository do: [:securityPolicy |
+    userProfile userId ~= securityPolicy owner userId
+      ifTrue: [ 
+        (RowanSample5_allUserIds includes: securityPolicy owner userId)
+          ifTrue: [ securityPolicy group: 'ApplicationModificationGroup' authorization: #write ] ] ].
+  userProfile 
+    addGroup: 'GlobalsModificationGroup';
+    addGroup: 'ApplicationModificationGroup';
+    yourself.
+%
+commit
 
 run
   | devSymDicts privateSymDicts |
