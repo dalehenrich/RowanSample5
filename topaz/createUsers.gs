@@ -93,22 +93,23 @@ run
       userProfile := AllUsers userWithId: userId.
       (userProfile objectNamed: 'UserGlobals')
         at: #rowanCompile put: true.
-      userId ~= RowanSample5_GlobalsCurator
-        ifTrue: [ 
+      symbolList := userProfile symbolList.
+      userId = RowanSample5_GlobalsCurator
+        ifTrue: [ symDicts := { RowanKernel. RowanLoader. RowanTools } ]
+        ifFalse: [  
           "all users except 'GlobalsCurator', get the sharedSymbolDicts added to their list"
-          symbolList := userProfile symbolList.
           symDicts := devSymDicts.
           userCat ~= 'dev' "assuming only one private user --- private users cannot share with other"
             ifTrue: [ 
               symDicts := devSymDicts copy.
-              symDicts addAll: privateSymDicts ].
-          GsObjectSecurityPolicy 
-            setCurrent: userProfile defaultObjectSecurityPolicy 
-            while: [
-              symDicts do: [:newDict |
-                | size  |
-                size := symbolList size.
-                userProfile insertDictionary: newDict at: size + 1 ] ] ] ] ].
+              symDicts addAll: privateSymDicts ] ].
+      GsObjectSecurityPolicy 
+        setCurrent: userProfile defaultObjectSecurityPolicy 
+        while: [
+          symDicts do: [:newDict |
+            | size  |
+            size := symbolList size.
+            userProfile insertDictionary: newDict at: size + 1 ] ] ] ].
 %
 commit
 
