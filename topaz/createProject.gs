@@ -40,7 +40,7 @@ run
 					(RwMethodDefinition
 						newForSelector: #'method1'
 						protocol: 'accessing'
-						source: 'method1 ^1').
+						source: 'method1 ^1'"'method', index asString, ' ^1'").
 
 			packageDefinition := projectDefinition packageNamed: packageName.
 			packageDefinition addClassDefinition: classDefinition. 
@@ -55,7 +55,7 @@ run
 							extensionUser ~= user
 								ifTrue: [ 
 									| methodSelector |
-									methodSelector :=  ('ext', extensionUser, '1') asSymbol.
+									methodSelector :=  ('ext', extensionUser, index printString) asSymbol.
 									classExtensionDefinition
 										addInstanceMethodDefinition:
 											(RwMethodDefinition
