@@ -5,5 +5,5 @@ Class {
 }
 
 { #category : 'accessing' }
-BlueClass1 >> method1 [ ^1
+BlueClass1 >> blue1 [ ^1
 ]

@@ -22,7 +22,7 @@ run
 	1 to: 2 do: [:index |
 		#('Red' 'Yellow' 'Blue' 'Dark')
 		do: [:user |
-			| classDefinition packageName packageDefinition extensionPackageName className classExtensionDefinition |
+			| classDefinition packageName packageDefinition extensionPackageName className classExtensionDefinition methodSelector |
 			packageName := 'RowanSample5-', user, index printString, '-Core'.
 			className := user, 'Class', index printString.
 			classDefinition := RwClassDefinition
@@ -35,12 +35,13 @@ run
 				comment: ''
 				pools: #()
 				type: 'normal'.
+			methodSelector := user asLowercase, index asString.
 			classDefinition
 				addInstanceMethodDefinition:
 					(RwMethodDefinition
-						newForSelector: #'method1'
+						newForSelector: methodSelector asSymbol
 						protocol: 'accessing'
-						source: 'method1 ^1'"'method', index asString, ' ^1'").
+						source: methodSelector, ' ^1').
 
 			packageDefinition := projectDefinition packageNamed: packageName.
 			packageDefinition addClassDefinition: classDefinition. 
@@ -54,14 +55,14 @@ run
 						do: [:extensionUser |
 							extensionUser ~= user
 								ifTrue: [ 
-									| methodSelector |
-									methodSelector :=  ('ext', extensionUser, index printString) asSymbol.
+									|  |
+									methodSelector :=  'ext', extensionUser, index printString.
 									classExtensionDefinition
 										addInstanceMethodDefinition:
 											(RwMethodDefinition
-												newForSelector: methodSelector
+												newForSelector: methodSelector asSymbol
 												protocol: '*', extensionPackageName asLowercase
-												source: methodSelector asString, ' ^2') ] ].
+												source: methodSelector, ' ^2') ] ].
 					packageDefinition := projectDefinition packageNamed: extensionPackageName.
 					packageDefinition addClassExtension: classExtensionDefinition ] ] ].
 
