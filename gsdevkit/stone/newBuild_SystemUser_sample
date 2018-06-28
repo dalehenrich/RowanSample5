@@ -20,7 +20,7 @@ startTopaz $GEMSTONE_NAME -l << EOF
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/defineGlobals.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createUsers.gs
 # uncomment following to create initial packages from scratch
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createProject.gs
+#  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createProject.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
 
   exit
