@@ -3,7 +3,7 @@ run
 	| projectName projectDefinition packageNames |
 	projectName := 'RowanSample5'.
 	packageNames := { 'RowanSample5-Red-Core' . 'RowanSample5-Blue-Core' .'RowanSample5-Yellow-Core' .'RowanSample5-Dark-Core' }.
-	projectDefinition := projectTools create
+	projectDefinition := Rowan projectTools create
 		createGitBasedProject: projectName
 		packageNames: packageNames
 		format: 'tonel'
@@ -30,9 +30,9 @@ run
 						source: 'method1 ^1').
 
 			packageDefinition := projectDefinition packageNamed: packageName.
-			packageDefinition addClassDefinition: classDefinition.
+			packageDefinition addClassDefinition: classDefinition ].
 	"write"
-	Rowan projectTools load writeProjectDefinition: projectDefinition.
+	Rowan projectTools write writeProjectDefinition: projectDefinition.
 
 %
 commit
