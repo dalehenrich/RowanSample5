@@ -1,7 +1,7 @@
 Class {
 	#name : 'YellowClass',
 	#superclass : 'Object',
-	#category : 'RowanSample5-Yellow-Core'
+	#category : 'RowanSample5-Yellow1-Core'
 }
 
 { #category : 'accessing' }

@@ -5,8 +5,8 @@
 		[ 'gemstone' ] : {
 			'yellow' : {
 				#packageNames : [
-					'RowanSample5-Yellow-Core',
-					'RowanSample5-Yellow-Extensions'
+					'RowanSample5-Yellow1-Core',
+					'RowanSample5-Yellow1-Extensions'
 				]
 				},
 			'yellow_globals' : {
@@ -19,8 +19,8 @@
 		'gemstone' : {
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
-					'RowanSample5-Yellow-Core' : { 'symbolDictName' : 'Yellow1' },
-					'RowanSample5-Yellow-Extensions' : { 'symbolDictName' : 'Yellow1' }
+					'RowanSample5-Yellow1-Core' : { 'symbolDictName' : 'Yellow1' },
+					'RowanSample5-Yellow1-Extensions' : { 'symbolDictName' : 'Yellow1' }
 					}
 				}
 			}

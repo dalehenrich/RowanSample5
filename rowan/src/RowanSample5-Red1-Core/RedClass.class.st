@@ -1,7 +1,7 @@
 Class {
 	#name : 'RedClass',
 	#superclass : 'Object',
-	#category : 'RowanSample5-Red-Core'
+	#category : 'RowanSample5-Red1-Core'
 }
 
 { #category : 'accessing' }

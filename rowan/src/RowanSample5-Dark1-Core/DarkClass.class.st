@@ -1,7 +1,7 @@
 Class {
 	#name : 'DarkClass',
 	#superclass : 'Object',
-	#category : 'RowanSample5-Dark-Core'
+	#category : 'RowanSample5-Dark1-Core'
 }
 
 { #category : 'accessing' }

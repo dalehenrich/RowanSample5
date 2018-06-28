@@ -2,9 +2,9 @@
 run
 	| projectName projectDefinition packageNames utils dirPath |
 	projectName := 'RowanSample5'.
-	packageNames := { 'RowanSample5-Red-Core' . 'RowanSample5-Blue-Core' .'RowanSample5-Yellow-Core' .'RowanSample5-Dark-Core' .
-			 'RowanSample5-Red-Extensions' . 'RowanSample5-Blue-Extensions' .'RowanSample5-Yellow-Extensions' .
-			'RowanSample5-Dark-Extensions' }.
+	packageNames := { 'RowanSample5-Red1-Core' . 'RowanSample5-Blue1-Core' .'RowanSample5-Yellow1-Core' .'RowanSample5-Dark1-Core' .
+			 'RowanSample5-Red1-Extensions' . 'RowanSample5-Blue1-Extensions' .'RowanSample5-Yellow1-Extensions' .
+			'RowanSample5-Dark1-Extensions' }.
 	projectDefinition := Rowan projectTools create
 		createProjectDefinitionFromSpecUrl: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/rowan/specs/RowanSample5_application.ston'.
 	utils := Rowan fileUtilities.
@@ -18,7 +18,7 @@ run
 	#('Red' 'Yellow' 'Blue' 'Dark')
 		do: [:user |
 			| classDefinition packageName packageDefinition extensionPackageName className classExtensionDefinition |
-			packageName := 'RowanSample5-', user, '-Core'.
+			packageName := 'RowanSample5-', user, '1-Core'.
 			className := user, 'Class'.
 			classDefinition := RwClassDefinition
 				newForClassNamed: className
@@ -43,7 +43,7 @@ run
 			user ~= 'Dark'
 				ifTrue: [
 					"No external extension methods for Dark, since no write permissions"
-					extensionPackageName := 'RowanSample5-', user, '-Extensions'.
+					extensionPackageName := 'RowanSample5-', user, '1-Extensions'.
 					classExtensionDefinition := RwClassExtensionDefinition newForClassNamed: className.
 					#('Red' 'Yellow' 'Blue' 'Dark')
 						do: [:extensionUser |
