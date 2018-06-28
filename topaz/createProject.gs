@@ -17,7 +17,7 @@ run
 	projectDefinition addPackagesNamed: packageNames.
 	#('Red' 'Yellow' 'Blue' 'Dark')
 		do: [:user |
-			| classDefinition packageName packageDefinition extensionPackageName className |
+			| classDefinition packageName packageDefinition extensionPackageName className classExtensionDefinition |
 			packageName := 'RowanSample5-', user, '-Core'.
 			className := user, 'Class'.
 			classDefinition := RwClassDefinition
@@ -38,24 +38,24 @@ run
 						source: 'method1 ^1').
 
 			packageDefinition := projectDefinition packageNamed: packageName.
-			packageDefinition addClassDefinition: classDefinition 
+			packageDefinition addClassDefinition: classDefinition. 
 
 			extensionPackageName := 'RowanSample5-', user, '-Extensions'.
+			classExtensionDefinition := RwClassExtensionDefinition newForClassNamed: className.
 			#('Red' 'Yellow' 'Blue' 'Dark')
 				do: [:extensionUser |
 					extensionUser ~= user
 						ifTrue: [ 
 							| methodSelector |
-							classExtensionDefinition := RwClassExtensionDefinition newForClassNamed: className.
 							methodSelector :=  ('ext', extensionUser, '1') asSymbol.
 							classExtensionDefinition
 								addInstanceMethodDefinition:
 									(RwMethodDefinition
 										newForSelector: methodSelector
 										protocol: '*', extensionPackageName asLowercase
-										source: methodSelector asString, ' ^2').
-							packageDefinition := projectDefinition packageNamed: extensionPackageName.
-							packageDefinition addClassExtension: classExtensionDefinition ] ] ].
+										source: methodSelector asString, ' ^2') ] ].
+			packageDefinition := projectDefinition packageNamed: extensionPackageName.
+			packageDefinition addClassExtension: classExtensionDefinition ].
 
 	"write"
 	Rowan projectTools write writeProjectDefinition: projectDefinition.
