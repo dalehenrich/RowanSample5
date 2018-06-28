@@ -70,7 +70,7 @@ run
       GsObjectSecurityPolicy 
 	  setCurrent: userProfile defaultObjectSecurityPolicy 
 	    while: [
-	      #( 1 "2 3" ) do: [:index |
+	      #( 1 2" 3" ) do: [:index |
               | newDict session |
               newDict := SymbolDictionary new
                   name: (userId, index printString) asSymbol;

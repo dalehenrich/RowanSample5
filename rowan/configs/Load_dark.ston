@@ -6,7 +6,9 @@
 			'dark' : {
 				#packageNames : [
 					'RowanSample5-Dark1-Core',
-					'RowanSample5-Dark1-Extensions'
+					'RowanSample5-Dark1-Extensions',
+					'RowanSample5-Dark2-Core',
+					'RowanSample5-Dark2-Extensions'
 				]
 				},
 			'dark_globals' : {
@@ -20,7 +22,9 @@
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
 					'RowanSample5-Dark1-Core' : { 'symbolDictName' : 'Dark1' },
-					'RowanSample5-Dark1-Extensions' : { 'symbolDictName' : 'Dark1' }
+					'RowanSample5-Dark1-Extensions' : { 'symbolDictName' : 'Dark1' },
+					'RowanSample5-Dark2-Core' : { 'symbolDictName' : 'Dark2' },
+					'RowanSample5-Dark2-Extensions' : { 'symbolDictName' : 'Dark2' }
 					}
 				}
 			}

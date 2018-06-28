@@ -6,7 +6,9 @@
 			'blue' : {
 				#packageNames : [
 					'RowanSample5-Blue1-Core',
-					'RowanSample5-Blue1-Extensions'
+					'RowanSample5-Blue1-Extensions',
+					'RowanSample5-Blue2-Core',
+					'RowanSample5-Blue2-Extensions'
 				]
 				},
 			'blue_globals' : {
@@ -20,7 +22,9 @@
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
 					'RowanSample5-Blue1-Core' : { 'symbolDictName' : 'Blue1' },
-					'RowanSample5-Blue1-Extensions' : { 'symbolDictName' : 'Blue1' }
+					'RowanSample5-Blue1-Extensions' : { 'symbolDictName' : 'Blue1' },
+					'RowanSample5-Blue2-Core' : { 'symbolDictName' : 'Blue2' },
+					'RowanSample5-Blue2-Extensions' : { 'symbolDictName' : 'Blue2' }
 					}
 				}
 			}

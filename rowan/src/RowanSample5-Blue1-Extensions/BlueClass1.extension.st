@@ -1,13 +1,13 @@
-Extension { #name : 'BlueClass' }
+Extension { #name : 'BlueClass1' }
 
 { #category : '*rowansample5-blue1-extensions' }
-BlueClass >> extDark1 [ ^2
+BlueClass1 >> extDark1 [ ^2
 ]
 
 { #category : '*rowansample5-blue1-extensions' }
-BlueClass >> extRed1 [ ^2
+BlueClass1 >> extRed1 [ ^2
 ]
 
 { #category : '*rowansample5-blue1-extensions' }
-BlueClass >> extYellow1 [ ^2
+BlueClass1 >> extYellow1 [ ^2
 ]

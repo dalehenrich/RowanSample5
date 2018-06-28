@@ -6,7 +6,9 @@
 			'red' : {
 				#packageNames : [
 					'RowanSample5-Red1-Core',
-					'RowanSample5-Red1-Extensions'
+					'RowanSample5-Red1-Extensions',
+					'RowanSample5-Red2-Core',
+					'RowanSample5-Red2-Extensions'
 				]
 				},
 			'red_globals' : {
@@ -20,7 +22,9 @@
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
 					'RowanSample5-Red1-Core' : { 'symbolDictName' : 'Red1' },
-					'RowanSample5-Red1-Extensions' : { 'symbolDictName' : 'Red1' }
+					'RowanSample5-Red1-Extensions' : { 'symbolDictName' : 'Red1' },
+					'RowanSample5-Red2-Core' : { 'symbolDictName' : 'Red2' },
+					'RowanSample5-Red2-Extensions' : { 'symbolDictName' : 'Red2' }
 					}
 				}
 			}

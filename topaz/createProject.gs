@@ -2,9 +2,13 @@
 run
 	| projectName projectDefinition packageNames utils dirPath |
 	projectName := 'RowanSample5'.
-	packageNames := { 'RowanSample5-Red1-Core' . 'RowanSample5-Blue1-Core' .'RowanSample5-Yellow1-Core' .'RowanSample5-Dark1-Core' .
-			 'RowanSample5-Red1-Extensions' . 'RowanSample5-Blue1-Extensions' .'RowanSample5-Yellow1-Extensions' .
-			'RowanSample5-Dark1-Extensions' }.
+	packageNames := {}.
+	1 to: 2 do: [:index |
+		#('Red' 'Yellow' 'Blue' 'Dark')
+		do: [:user |
+			packageNames 
+				add: 'RowanSample5-', user, index  printString, '-Core';
+				add: 'RowanSample5-', user, index printString, '-Extensions' ] ].
 	projectDefinition := Rowan projectTools create
 		createProjectDefinitionFromSpecUrl: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/rowan/specs/RowanSample5_application.ston'.
 	utils := Rowan fileUtilities.
@@ -15,11 +19,12 @@ run
 		in: dirPath
 		do: [ :fileStream | fileStream nextPutAll: '{ #format : ''tonel''}' ].	
 	projectDefinition addPackagesNamed: packageNames.
-	#('Red' 'Yellow' 'Blue' 'Dark')
+	1 to: 2 do: [:index |
+		#('Red' 'Yellow' 'Blue' 'Dark')
 		do: [:user |
 			| classDefinition packageName packageDefinition extensionPackageName className classExtensionDefinition |
-			packageName := 'RowanSample5-', user, '1-Core'.
-			className := user, 'Class'.
+			packageName := 'RowanSample5-', user, index printString, '-Core'.
+			className := user, 'Class', index printString.
 			classDefinition := RwClassDefinition
 				newForClassNamed: className
 				super: 'Object'
@@ -43,7 +48,7 @@ run
 			user ~= 'Dark'
 				ifTrue: [
 					"No external extension methods for Dark, since no write permissions"
-					extensionPackageName := 'RowanSample5-', user, '1-Extensions'.
+					extensionPackageName := 'RowanSample5-', user, index printString, '-Extensions'.
 					classExtensionDefinition := RwClassExtensionDefinition newForClassNamed: className.
 					#('Red' 'Yellow' 'Blue' 'Dark')
 						do: [:extensionUser |
@@ -58,7 +63,7 @@ run
 												protocol: '*', extensionPackageName asLowercase
 												source: methodSelector asString, ' ^2') ] ].
 					packageDefinition := projectDefinition packageNamed: extensionPackageName.
-					packageDefinition addClassExtension: classExtensionDefinition ] ].
+					packageDefinition addClassExtension: classExtensionDefinition ] ] ].
 
 	"write"
 	Rowan projectTools write writeProjectDefinition: projectDefinition.

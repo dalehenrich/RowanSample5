@@ -1,9 +1,9 @@
 Class {
-	#name : 'DarkClass',
+	#name : 'DarkClass1',
 	#superclass : 'Object',
 	#category : 'RowanSample5-Dark1-Core'
 }
 
 { #category : 'accessing' }
-DarkClass >> method1 [ ^1
+DarkClass1 >> method1 [ ^1
 ]
