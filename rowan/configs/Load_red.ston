@@ -6,7 +6,7 @@
 			'red' : {
 				#packageNames : [
 					'RowanSample5-Red-Core',
-					'RowanSample5-Red-Extenstions'
+					'RowanSample5-Red-Extensions'
 				]
 				},
 			'red_globals' : {
