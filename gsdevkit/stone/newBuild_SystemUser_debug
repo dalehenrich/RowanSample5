@@ -17,6 +17,13 @@ startTopaz $GEMSTONE_NAME -l << EOF
   set user SystemUser p swordfish
   login
 
+run
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_current.ston'
+%
+commit
+
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
 
   exit

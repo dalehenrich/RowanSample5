@@ -10,7 +10,7 @@ run
 				add: 'RowanSample5-', user, index  printString, '-Core';
 				add: 'RowanSample5-', user, index printString, '-Extensions' ] ].
 	projectDefinition := Rowan projectTools create
-		createProjectDefinitionFromSpecUrl: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_application.ston'.
+		createProjectDefinitionFromSpecUrl: RowanSample5_Spec_Url.
 	utils := Rowan fileUtilities.
 	dirPath := projectDefinition repositoryRootPath , utils pathNameDelimiter , projectDefinition repoPath.
 	utils ensureDirectoryExists: dirPath.

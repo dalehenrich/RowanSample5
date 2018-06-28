@@ -21,7 +21,7 @@ run
     put:  'GlobalsCurator';
     at: #'RowanSample5_UserCurator'
     put:  'UserCurator';
-  yourself
+    yourself.
 %
 commit
 
