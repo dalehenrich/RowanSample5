@@ -5,7 +5,8 @@
 		[ 'gemstone' ] : {
 			'dark' : {
 				#packageNames : [
-					'RowanSample5-Dark-Core'
+					'RowanSample5-Dark-Core',
+					'RowanSample5-Dark-Extensions'
 				]
 				},
 			'dark_globals' : {
@@ -18,7 +19,8 @@
 		'gemstone' : {
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
-					'RowanSample5-Dark-Core' : { 'symbolDictName' : 'Dark1' }
+					'RowanSample5-Dark-Core' : { 'symbolDictName' : 'Dark1' },
+					'RowanSample5-Dark-Extensions' : { 'symbolDictName' : 'Dark1' }
 					}
 				}
 			}

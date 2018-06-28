@@ -5,7 +5,8 @@
 		[ 'gemstone' ] : {
 			'red' : {
 				#packageNames : [
-					'RowanSample5-Red-Core'
+					'RowanSample5-Red-Core',
+					'RowanSample5-Red-Extenstions'
 				]
 				},
 			'red_globals' : {
@@ -18,7 +19,8 @@
 		'gemstone' : {
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
-					'RowanSample5-Red-Core' : { 'symbolDictName' : 'Red1' }
+					'RowanSample5-Red-Core' : { 'symbolDictName' : 'Red1' },
+					'RowanSample5-Red-Extensions' : { 'symbolDictName' : 'Red1' }
 					}
 				}
 			}
