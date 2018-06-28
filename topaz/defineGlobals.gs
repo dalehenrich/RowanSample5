@@ -6,7 +6,7 @@ run
         at: 'dev' put: #('Red' 'Yellow' 'Blue');
         at: 'super' put: #('GlobalsCurator' 'ApplicationCurator' 'UserCurator');
 	at: 'private' put: #('Dark');
-	at: 'systemuser' put: #('SystemUser');
+	at: 'gemstone' put: #('SystemUser');
         yourself);
     yourself.
   UserGlobals 

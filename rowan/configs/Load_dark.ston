@@ -5,6 +5,7 @@
 		[ 'gemstone' ] : {
 			'dark' : {
 				#packageNames : [
+					'RowanSample5-Dark-Core'
 				]
 				},
 			'dark_globals' : {

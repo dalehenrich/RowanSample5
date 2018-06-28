@@ -5,6 +5,7 @@
 		[ 'gemstone' ] : {
 			'red' : {
 				#packageNames : [
+					'RowanSample5-Red-Core'
 				]
 				},
 			'red_globals' : {
