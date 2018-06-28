@@ -4,8 +4,8 @@
 	#projectUrl : 'https://github.com/dalehenrich/RowanSample5',
 	#configsPath : 'rowan/configs',
 	#repoPath : 'rowan/src',
-	#specsPath : 'rowan/specs',
+	#specsPath : 'specs',
 	#defaultConfigurationNames : [ 'Load' ],
-	#defaultGroupNames : [ 'Users' ],
+	#defaultGroupNames : [ 'Application' ],
 	#comment : ''
 }
