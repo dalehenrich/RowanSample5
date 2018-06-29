@@ -44,8 +44,10 @@ run
 						source: methodSelector, ' ^1').
 			packageDefinition addClassDefinition: classDefinition. 
 			classExtensionDefinition := RwClassExtensionDefinition newForClassNamed: className.
-			#('Red' 'Yellow' 'Blue' 'Dark')
-				do: [:extensionUser |
+			user ~= 'Dark'
+				ifTrue: [
+					#('Red' 'Yellow' 'Blue' 'Dark')
+					do: [:extensionUser |
 					extensionUser ~= user
 						ifTrue: [ 
 							| extensionPackageDefinition extensionPackageName |
@@ -58,7 +60,7 @@ run
 										newForSelector: methodSelector asSymbol
 										protocol: '*', extensionPackageName asLowercase
 										source: methodSelector, ' ^2').
-							extensionPackageDefinition addClassExtension: classExtensionDefinition ] ] ] ].
+							extensionPackageDefinition addClassExtension: classExtensionDefinition ] ] ] ] ].
 	#('Red' 'Yellow' 'Blue' 'Dark')
 	do: [:user |
 		| globalsExtensionsPackageName className packageDefinition classExtensionDefinition methodSelector  |
