@@ -11,17 +11,23 @@ run
     yourself.
   UserGlobals 
     at: #'RowanSample5_devUserIds'
-    put: 
+      put: 
       (((UserGlobals at: #'RowanSample5_userids') at: 'dev') copy
         addAll: ((UserGlobals at: #'RowanSample5_userids') at: 'private')).
   UserGlobals
     at: #'RowanSample5_ApplicationCurator'
-    put:  'ApplicationCurator';
+      put:  'ApplicationCurator';
     at: #'RowanSample5_GlobalsCurator'
-    put:  'GlobalsCurator';
+      put:  'GlobalsCurator';
     at: #'RowanSample5_UserCurator'
-    put:  'UserCurator';
+      put:  'UserCurator';
     yourself.
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+      put: '<place holder>';
+    at: #'RowanSample5_ApplicationSymbolDictionaries'
+      put: {'<place holder>'};
+    yourself
 %
 commit
 

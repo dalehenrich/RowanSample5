@@ -27,9 +27,20 @@ commit
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/defineGlobals.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createUsers.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_current.gs
-# uncomment following to create initial packages from scratch - do a "rm -rf $ROWAN_PROJECTS_HOME/RowanSample5/current/src/RowanSample5*"
-#  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createProject_current.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_current.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_current.gs
+
+run
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_monolithic.ston'
+%
+commit
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
 
   exit
 EOF

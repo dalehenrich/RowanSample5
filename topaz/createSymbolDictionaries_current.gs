@@ -1,7 +1,8 @@
 run
-  | devSymDicts privateSymDicts |
+  | devSymDicts privateSymDicts systemSymDicts |
   devSymDicts := {}.
   privateSymDicts := {}.
+  systemSymDicts := { RowanKernel. RowanLoader. RowanTools }.
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
     (#('super' 'system') includes: userCat) ifFalse: [
@@ -28,13 +29,12 @@ run
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
    userIdList do: [:userId |
-      | userProfile symbolList symDicts systemSymDicts |
+      | userProfile symbolList symDicts |
       "Needed to be able to use Jadeite ... in the short term"
       userProfile := AllUsers userWithId: userId.
       (userProfile objectNamed: 'UserGlobals')
         at: #rowanCompile put: true.
       symbolList := userProfile symbolList.
-      systemSymDicts := { RowanKernel. RowanLoader. RowanTools }.
       userId = RowanSample5_GlobalsCurator
         ifTrue: [ symDicts := systemSymDicts ]
         ifFalse: [  
@@ -53,6 +53,12 @@ run
             | size  |
             size := symbolList size.
             userProfile insertDictionary: newDict at: size + 1 ] ] ] ].
+      devSymDicts 
+        addAll: privateSymDicts;
+        addAll: systemSymDicts.
+      UserGlobals
+        at: #'RowanSample5_ApplicationSymbolDictionaries'
+        put: devSymDicts.
 %
 commit
 
