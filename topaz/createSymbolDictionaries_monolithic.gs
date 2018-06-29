@@ -31,7 +31,9 @@ run
           "all users except RowanSample5_GlobalsCurator, get the sharedSymbolDicts added to their list"
           symDicts := devSymDicts.
           userId = RowanSample5_ApplicationCurator
-            ifTrue: [ symDicts addAll: systemSymDicts ] ].
+            ifTrue: [
+		symDicts := symDicts copy. 
+		symDicts addAll: systemSymDicts ] ].
       GsObjectSecurityPolicy 
         setCurrent: userProfile defaultObjectSecurityPolicy 
         while: [

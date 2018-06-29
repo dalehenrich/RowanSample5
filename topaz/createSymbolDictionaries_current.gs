@@ -5,7 +5,7 @@ run
   systemSymDicts := { RowanKernel. RowanLoader. RowanTools }.
   RowanSample5_userids
   keysAndValuesDo: [:userCat :userIdList |
-    (#('super' 'system') includes: userCat) ifFalse: [
+    (#('super') includes: userCat) ifFalse: [
     "super users do not have their own symbol dictionaries"
     userIdList
     do: [:userId |
