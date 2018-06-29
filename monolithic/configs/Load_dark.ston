@@ -1,0 +1,27 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_dark',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'dark' : {
+				#packageNames : [
+					'RowanSample5-Dark-Core'
+					]
+				},
+			'dark_globals' : {
+				#packageNames : [
+					]
+				}
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-Dark-Core' : { 'symbolDictName' : 'Application' }
+					}
+				}
+			}
+		},
+	#comment : 'Dark user config'
+}

@@ -1,0 +1,11 @@
+ RwSimpleProjectSpecification{
+	#specName : 'RowanSample5',
+	#version : '0.2.0',
+	#projectUrl : 'https://github.com/dalehenrich/RowanSample5',
+	#configsPath : 'monolithic/configs',
+	#repoPath : 'monolithic/src',
+	#specsPath : 'specs',
+	#defaultConfigurationNames : [ 'Load' ],
+	#defaultGroupNames : [ 'Application' ],
+	#comment : ''
+}

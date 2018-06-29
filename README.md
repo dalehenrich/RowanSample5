@@ -13,9 +13,6 @@ Each user has an extension method for a class (Object) in the Globals symbol dic
 In each of the configurations below, the classes and methods should be the same.
 The only difference is the number of symbol dictionaries and the package structure to support the symbol dictionary structure.
 
-Dark does not have world-read permissions, so it's symbol dictionaries are private. 
-Dark can see the classes and methds for Red, Yellow, Blue, but these users cannot see the classes and methods owned by Dark.
-
 There are three administrative users:
 - ApplicationCurator
 - GlobalsCurator
@@ -39,6 +36,9 @@ There are two packages per symbol dictionary `*-Core` and `*-Extensions`
 
 There is a single package `RowanSample5-GlobalsExtensions` that contains the extension methods for Globals.
 
+Dark does not have world-read permissions, so it's symbol dictionaries are private. 
+Dark can see the classes and methds for Red, Yellow, Blue, but these users cannot see the classes and methods owned by Dark.
+
 ### `_monolithic` configuration/package structure
 
 In this option there is a single monolithic symbol dictionary where all code is stored.
@@ -46,3 +46,5 @@ In this option there is a single monolithic symbol dictionary where all code is 
 There is a single package per user `*-Core` that includes the user's classes and extension methods.
 
 There is a single package `RowanSample5-GlobalsExtensions` that contains the extension methods for Globals.
+
+With a single Application symbol dictionary, Dark is just a normal user like Red, Yellow, or Blue.

@@ -1,0 +1,27 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_red',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'red' : {
+				#packageNames : [
+					'RowanSample5-Red-Core'
+					]
+				},
+			'red_globals' : {
+				#packageNames : [
+					]
+				}
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-Red-Core' : { 'symbolDictName' : 'Application' }
+					}
+				}
+			}
+		},
+	#comment : 'Red user config'
+}
