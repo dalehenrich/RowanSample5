@@ -9,11 +9,11 @@
 					'RowanSample5-Dark1-Extensions',
 					'RowanSample5-Dark2-Core',
 					'RowanSample5-Dark2-Extensions'
-				]
+					]
 				},
 			'dark_globals' : {
 				#packageNames : [
-				]
+					]
 				}
 			}
 		},

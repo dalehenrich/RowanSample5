@@ -9,11 +9,11 @@
 					'RowanSample5-Blue1-Extensions',
 					'RowanSample5-Blue2-Core',
 					'RowanSample5-Blue2-Extensions'
-				]
+					]
 				},
 			'blue_globals' : {
 				#packageNames : [
-				]
+					]
 				}
 			}
 		},

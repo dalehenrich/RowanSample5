@@ -9,11 +9,11 @@
 					'RowanSample5-Red1-Extensions',
 					'RowanSample5-Red2-Core',
 					'RowanSample5-Red2-Extensions'
-				]
+					]
 				},
 			'red_globals' : {
 				#packageNames : [
-				]
+					]
 				}
 			}
 		},

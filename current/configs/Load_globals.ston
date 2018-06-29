@@ -6,7 +6,8 @@
 			'Globals' : {
 				#packageNames : [
 					'RowanSample5-GlobalsExtensions'
-				]
+					]
+				}
 			}
 		},
 	#conditionalPackageMapSpecs : {

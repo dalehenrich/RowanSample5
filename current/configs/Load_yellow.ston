@@ -9,11 +9,11 @@
 					'RowanSample5-Yellow1-Extensions',
 					'RowanSample5-Yellow2-Core',
 					'RowanSample5-Yellow2-Extensions'
-				]
+					]
 				},
 			'yellow_globals' : {
 				#packageNames : [
-				]
+					]
 				}
 			}
 		},

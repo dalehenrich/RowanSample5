@@ -67,7 +67,7 @@ run
 					packageDefinition addClassExtension: classExtensionDefinition ] ] ].
 	#('Red' 'Yellow' 'Blue' 'Dark')
 	do: [:user |
-		| globalsExtensionsPackageName className packageDefinition classExtensionDefinitionmethodSelector  |
+		| globalsExtensionsPackageName className packageDefinition classExtensionDefinition methodSelector  |
 		globalsExtensionsPackageName := 'RowanSample5-GlobalsExtensions'.
 		className := 'Object'.
 		packageDefinition := projectDefinition packageNamed: globalsExtensionsPackageName.
@@ -79,8 +79,8 @@ run
 			addInstanceMethodDefinition:
 				(RwMethodDefinition
 					newForSelector: methodSelector asSymbol
-					protocol: '*', extensionPackageName asLowercase
-					source: methodSelector, ' ^3') ] ] ].
+					protocol: '*', globalsExtensionsPackageName asLowercase
+					source: methodSelector, ' ^3') ].
 
 	"write"
 	Rowan projectTools write writeProjectDefinition: projectDefinition.
