@@ -29,8 +29,8 @@ Combined, the GlobalsCurator and UserCurator can perform the same work as the Ap
 ### `_current` configuration/package structure
 
 In this option, each user has 2 symbol dictionaries:
-- `\<color\>`1
-- `\<color\>`2
+- \<userId>1
+- \<userId>2
 
 There are two packages per symbol dictionary `*-Core` and `*-Extensions`
 
