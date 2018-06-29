@@ -2,7 +2,7 @@
 run
 	| projectName projectDefinition packageNames utils dirPath |
 	projectName := 'RowanSample5'.
-	packageNames := {}.
+	packageNames := { 'RowanSample5-GlobalsExtensions' }.
 	1 to: 2 do: [:index |
 		#('Red' 'Yellow' 'Blue' 'Dark')
 		do: [:user |
@@ -65,6 +65,22 @@ run
 												source: methodSelector, ' ^2') ] ].
 					packageDefinition := projectDefinition packageNamed: extensionPackageName.
 					packageDefinition addClassExtension: classExtensionDefinition ] ] ].
+	#('Red' 'Yellow' 'Blue' 'Dark')
+	do: [:user |
+		| globalsExtensionsPackageName className packageDefinition classExtensionDefinitionmethodSelector  |
+		globalsExtensionsPackageName := 'RowanSample5-GlobalsExtensions'.
+		className := 'Object'.
+		packageDefinition := projectDefinition packageNamed: globalsExtensionsPackageName.
+		classExtensionDefinition := packageDefinition classExtensions 
+			at: className
+			ifAbsentPut: [ RwClassExtensionDefinition newForClassNamed: className ].
+		methodSelector :=  'ext', user.
+		classExtensionDefinition
+			addInstanceMethodDefinition:
+				(RwMethodDefinition
+					newForSelector: methodSelector asSymbol
+					protocol: '*', extensionPackageName asLowercase
+					source: methodSelector, ' ^3') ] ] ].
 
 	"write"
 	Rowan projectTools write writeProjectDefinition: projectDefinition.

@@ -1,0 +1,22 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_globals',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'Globals' : {
+				#packageNames : [
+					'RowanSample5-GlobalsExtensions'
+				]
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-GlobalsExtensions' : { 'symbolDictName' : 'Globals' }
+					}
+				}
+			}
+		},
+	#comment : 'Globals config'
+}

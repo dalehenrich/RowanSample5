@@ -18,7 +18,8 @@
 		'Load_red', 
 		'Load_yellow',
 		'Load_blue',
-		'Load_dark'
+		'Load_dark',
+		'Load_globals'
 		],
 	#comment : 'top-level config'
 }

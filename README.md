@@ -37,12 +37,12 @@ In this option, each user has 2 symbol dictionaries:
 
 There are two packages per symbol dictionary `*-Core` and `*-Extensions`
 
-There is a single package `*-GlobalExtensions` that contains the extension methods for Globals
+There is a single package `RowanSample5-GlobalsExtensions` that contains the extension methods for Globals.
 
 ### `_monolithic` configuration/package structure
 
 In this option there is a single monolithic symbol dictionary where all code is stored.
 
-There is a single package per user `*-Core` that includes the users' classes and extension methods.
+There is a single package per user `*-Core` that includes the user's classes and extension methods.
 
-
+There is a single package `RowanSample5-GlobalsExtensions` that contains the extension methods for Globals.
