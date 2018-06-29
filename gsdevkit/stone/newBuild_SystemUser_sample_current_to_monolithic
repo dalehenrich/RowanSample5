@@ -39,6 +39,7 @@ run
 %
 commit
 
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
 
