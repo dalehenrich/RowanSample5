@@ -55,7 +55,7 @@ run
             userProfile insertDictionary: newDict at: size + 1 ] ] ] ].
       devSymDicts 
         addAll: privateSymDicts;
-        addAll: systemSymDicts.
+        addAll: {Globals}.
       UserGlobals
         at: #'RowanSample5_ApplicationSymbolDictionaries'
         put: devSymDicts.

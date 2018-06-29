@@ -14,11 +14,10 @@ run
 		createDiskBasedProjectDefinition: projectName 
 		packageNames: packageNames 
 		format: 'tonel'
-		root: $ROWAN_PROJECTS_HOME.
+		root: '$ROWAN_PROJECTS_HOME'.
 	RowanSample5_ApplicationSymbolDictionaries do: [:symDict |
- 		packageName := 'Staging-', symDict name asString.
 		projectDefinition
-			setSymbolDictName: symDict name asString forPackageNamed: packageNames.
+			setSymbolDictName: symDict name asString forPackageNamed: 'Staging-', symDict name asString ].
 	projectTools load loadProjectDefinition: projectDefinition.
 %
 commit
@@ -28,6 +27,6 @@ run
 		Rowan packageTools adopt 
 			adoptSymbolDictionary: symDict intoPackageNamed: 'Staging-', symDict name asString ].
 	Rowan packageTools adopt
-        	adoptSymbolDictionary: Globals  intoPackageNamed: ''Staging-Globals'.
+        	adoptSymbolDictionary: Globals intoPackageNamed: 'Staging-Globals'.
 %
 commit

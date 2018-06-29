@@ -23,8 +23,6 @@ run
       put:  'UserCurator';
     yourself.
   UserGlobals
-    at: #'RowanSample5_Spec_Url'
-      put: '<place holder>';
     at: #'RowanSample5_ApplicationSymbolDictionaries'
       put: {'<place holder>'};
     yourself
