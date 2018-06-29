@@ -20,15 +20,15 @@ startTopaz $GEMSTONE_NAME -l << EOF
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
-    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_monolithic.ston'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_current.ston'
 %
 commit
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/defineGlobals.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createUsers.gs
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
-# uncomment following to create initial packages from scratch - do a "rm -rf $ROWAN_PROJECTS_HOME/RowanSample5/monolithic/src/RowanSample5*"
-#  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createProject_monolithic.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_current.gs
+# uncomment following to create initial packages from scratch - do a "rm -rf $ROWAN_PROJECTS_HOME/RowanSample5/current/src/RowanSample5*"
+#  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createProject_current.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
 
   exit
