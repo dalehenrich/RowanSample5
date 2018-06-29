@@ -18,7 +18,7 @@
 		'gemstone' : {
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
-					'RowanSample5-Yellow-Core' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Yellow-Core' : { 'symbolDictName' : 'Application' }
 					}
 				}
 			}

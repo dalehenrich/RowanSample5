@@ -19,6 +19,7 @@
 			'allusers' : {
 				#packageNameToPlatformPropertiesMap : {
 					'RowanSample5-Blue-Core' : { 'symbolDictName' : 'Application' }
+					}
 				}
 			}
 		},

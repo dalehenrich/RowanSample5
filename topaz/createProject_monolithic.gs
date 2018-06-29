@@ -23,7 +23,7 @@ run
 		packageName := 'RowanSample5-', user, '-Core'.
 		packageDefinition := projectDefinition packageNamed: packageName.
 		1 to: 2 do: [:index |
-			| classDefinition classExtensionDefinition  extensionPackageName className classExtensionDefinition methodSelector |
+			| classDefinition   extensionPackageName className classExtensionDefinition methodSelector |
 			className := user, 'Class', index printString.
 			classDefinition := RwClassDefinition
 				newForClassNamed: className

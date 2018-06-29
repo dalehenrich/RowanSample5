@@ -1,7 +1,7 @@
 run
   | devSymDicts userId userProfile symbolList |
 
-  symDicts := {}.
+  devSymDicts := {}.
   userId := RowanSample5_ApplicationCurator.
   userProfile := AllUsers userWithId: userId.
   symbolList := userProfile symbolList.
