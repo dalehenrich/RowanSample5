@@ -10,12 +10,14 @@ run
 	projectDefinition := Rowan projectTools create
 		createProjectDefinitionFromSpecUrl: RowanSample5_Spec_Url.
 	utils := Rowan fileUtilities.
-	dirPath := projectDefinition repositoryRootPath , utils pathNameDelimiter , projectDefinition repoPath.
+	dirPath := projectDefinition repositoryRootPath , utils pathNameDelimiter , 
+		projectDefinition repoPath.
 	utils ensureDirectoryExists: dirPath.
 	utils
 		writeStreamFor: 'properties.st'
 		in: dirPath
-		do: [ :fileStream | fileStream nextPutAll: '{ #format : ''tonel''}' ].	
+		do: [ :fileStream | 
+			fileStream nextPutAll: '{ #format : ''tonel''}' ].	
 	projectDefinition addPackagesNamed: packageNames.
 	#('Red' 'Yellow' 'Blue' 'Dark')
 	do: [:user |
@@ -23,12 +25,24 @@ run
 		packageName := 'RowanSample5-', user, '-Core'.
 		packageDefinition := projectDefinition packageNamed: packageName.
 		1 to: 2 do: [:index |
-			| classDefinition   extensionPackageName className classExtensionDefinition methodSelector |
+			| classDefinition subclassDefinition extensionPackageName className 
+				subclassName classExtensionDefinition methodSelector |
 			className := user, 'Class', index printString.
+			subclassName := user, 'Subclass', index printString.
 			classDefinition := RwClassDefinition
 				newForClassNamed: className
 				super: 'Object'
-				instvars: #()
+				instvars: #(ivar1)
+				classinstvars: #()
+				classvars: #()
+				category: packageName
+				comment: ''
+				pools: #()
+				type: 'normal'.
+			subclassDefinition := RwClassDefinition
+				newForClassNamed: subclassName
+				super: className
+				instvars: #(ivar2)
 				classinstvars: #()
 				classvars: #()
 				category: packageName
@@ -42,7 +56,9 @@ run
 						newForSelector: methodSelector asSymbol
 						protocol: 'accessing'
 						source: methodSelector, ' ^1').
-			packageDefinition addClassDefinition: classDefinition. 
+			packageDefinition 
+				addClassDefinition: classDefinition;
+				addClassDefinition: subclassDefinition. 
 			classExtensionDefinition := RwClassExtensionDefinition newForClassNamed: className.
 			user ~= 'Dark'
 				ifTrue: [

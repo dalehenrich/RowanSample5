@@ -12,7 +12,8 @@ run
 	projectDefinition := Rowan projectTools create
 		createProjectDefinitionFromSpecUrl: RowanSample5_Spec_Url.
 	utils := Rowan fileUtilities.
-	dirPath := projectDefinition repositoryRootPath , utils pathNameDelimiter , projectDefinition repoPath.
+	dirPath := projectDefinition repositoryRootPath , utils pathNameDelimiter , 
+		projectDefinition repoPath.
 	utils ensureDirectoryExists: dirPath.
 	utils
 		writeStreamFor: 'properties.st'
@@ -22,13 +23,26 @@ run
 	1 to: 2 do: [:index |
 		#('Red' 'Yellow' 'Blue' 'Dark')
 		do: [:user |
-			| classDefinition packageName packageDefinition extensionPackageName className classExtensionDefinition methodSelector |
+			| classDefinition subclassDefinition packageName packageDefinition 
+				extensionPackageName className subclassName classExtensionDefinition 
+				methodSelector |
 			packageName := 'RowanSample5-', user, index printString, '-Core'.
 			className := user, 'Class', index printString.
+			subclassName := user, 'Subclass', index printString.
 			classDefinition := RwClassDefinition
 				newForClassNamed: className
 				super: 'Object'
-				instvars: #()
+				instvars: #(ivar1)
+				classinstvars: #()
+				classvars: #()
+				category: packageName
+				comment: ''
+				pools: #()
+				type: 'normal'.
+			subclassDefinition := RwClassDefinition
+				newForClassNamed: subclassName
+				super: className
+				instvars: #(ivar2)
 				classinstvars: #()
 				classvars: #()
 				category: packageName
@@ -44,7 +58,9 @@ run
 						source: methodSelector, ' ^1').
 
 			packageDefinition := projectDefinition packageNamed: packageName.
-			packageDefinition addClassDefinition: classDefinition. 
+			packageDefinition 
+				addClassDefinition: classDefinition;
+				addClassDefinition: subclassDefinition. 
 
 			user ~= 'Dark'
 				ifTrue: [

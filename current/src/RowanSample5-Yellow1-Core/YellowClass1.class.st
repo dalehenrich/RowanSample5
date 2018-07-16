@@ -1,6 +1,9 @@
 Class {
 	#name : 'YellowClass1',
 	#superclass : 'Object',
+	#instVars : [
+		'ivar1'
+	],
 	#category : 'RowanSample5-Yellow1-Core'
 }
 
