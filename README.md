@@ -48,3 +48,13 @@ There is a single package per user `*-Core` that includes the user's classes and
 There is a single package `RowanSample5-GlobalsExtensions` that contains the extension methods for Globals.
 
 With a single Application symbol dictionary, Dark is just a normal user like Red, Yellow, or Blue.
+
+### updating from `_current` to `_monolithic`
+ 
+When updating from `_current` to `_monolithic` the `newBuild_SystemUser_sample_current_to_monolithic` script:
+  1. `loads` the `_current` project into the stone.
+  2. `disowns` the `_current` project
+At this point the stone represents an existing application laid out in a set of symbol dictionaries and the following steps are used to install a *rowanized* version of the project, that includes changes to the symbol dictionary layout and package structure:
+  3. `adopts` the `_current` project into a `_staging` project
+  4. `loads` the `_monolithic` project into the stone
+  5. `disowns` the `_staging` project

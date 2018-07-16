@@ -40,6 +40,14 @@ run
 				pools: #()
 				type: 'normal'.
 			classDefinition gs_constraints: { { 'ivar1' . subclassName } }.
+			methodSelector := user asLowercase, index asString.
+			classDefinition
+				addInstanceMethodDefinition:
+					(RwMethodDefinition
+						newForSelector: methodSelector asSymbol
+						protocol: 'accessing'
+						source: methodSelector, ' ^1').
+
 			subclassDefinition := RwClassDefinition
 				newForClassNamed: subclassName
 				super: className
@@ -51,13 +59,6 @@ run
 				pools: #()
 				type: 'normal'.
 			subclassDefinition gs_constraints: { { 'ivar2' . 'Association' } }.
-			methodSelector := user asLowercase, index asString.
-			classDefinition
-				addInstanceMethodDefinition:
-					(RwMethodDefinition
-						newForSelector: methodSelector asSymbol
-						protocol: 'accessing'
-						source: methodSelector, ' ^1').
 
 			packageDefinition := projectDefinition packageNamed: packageName.
 			packageDefinition 
