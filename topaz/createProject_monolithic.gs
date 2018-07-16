@@ -39,6 +39,7 @@ run
 				comment: ''
 				pools: #()
 				type: 'normal'.
+			classDefinition gs_constraints: { { 'ivar1' . subclassName } }.
 			subclassDefinition := RwClassDefinition
 				newForClassNamed: subclassName
 				super: className
@@ -49,6 +50,7 @@ run
 				comment: ''
 				pools: #()
 				type: 'normal'.
+			subclassDefinition gs_constraints: { { 'ivar2' . 'Association' } }.
 			methodSelector := user asLowercase, index asString.
 			classDefinition
 				addInstanceMethodDefinition:

@@ -28,7 +28,7 @@ commit
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createUsers.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_current.gs
 # uncomment following to create initial packages from scratch - do a "rm -rf $GS_HOME/shared/repos/RowanSample5/current/src/RowanSample5*"
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createProject_current.gs
+#  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createProject_current.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
 
   exit

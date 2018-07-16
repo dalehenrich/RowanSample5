@@ -4,6 +4,12 @@ Class {
 	#instVars : [
 		'ivar1'
 	],
+	#gs_constraints : [
+		[
+			'ivar1',
+			'YellowSubclass2'
+		]
+	],
 	#category : 'RowanSample5-Yellow2-Core'
 }
 
