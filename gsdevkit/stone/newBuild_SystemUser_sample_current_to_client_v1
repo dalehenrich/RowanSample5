@@ -1,3 +1,11 @@
+#
+#	load application using Rowan into a stone where the application already exists
+#
+#		no error but RwExistingVisitorAddingExistingClassNotification is used 
+#		and this is not a performant solution when a large number of application
+#		classes are involved
+#
+
 set -e
 . defStone.env
 export vers="3.2.15"
