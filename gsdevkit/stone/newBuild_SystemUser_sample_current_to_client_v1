@@ -30,14 +30,15 @@ commit
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_current.gs
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_client_v1.gs
 
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
-    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_monolithic.ston'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_client_v1.ston'
 %
 commit
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_client_v1.gs
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_client.gs

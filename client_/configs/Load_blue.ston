@@ -1,0 +1,27 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_blue',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'blue' : {
+				#packageNames : [
+					'RowanSample5-Blue-Core'
+					]
+				},
+			'blue_globals' : {
+				#packageNames : [
+					]
+				}
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-Blue-Core' : { 'symbolDictName' : 'Globals' }
+					}
+				}
+			}
+		},
+	#comment : 'Blue user config'
+}

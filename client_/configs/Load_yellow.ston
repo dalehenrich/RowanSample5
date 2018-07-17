@@ -1,0 +1,27 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_yellow',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'yellow' : {
+				#packageNames : [
+					'RowanSample5-Yellow-Core'
+					]
+				},
+			'yellow_globals' : {
+				#packageNames : [
+					]
+				}
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-Yellow-Core' : { 'symbolDictName' : 'Globals' }
+					}
+				}
+			}
+		},
+	#comment : 'Yellow user config'
+}

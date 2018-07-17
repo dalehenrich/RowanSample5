@@ -7,6 +7,7 @@ run
 	packageNames := {}.
 	RowanSample5_ApplicationSymbolDictionaries do: [:symDict |
 		packageNames add: 'Staging-', symDict name asString ].
+	packageNames add: 'Staging-Globals'.
 
 	projectTools := Rowan projectTools.
 
@@ -19,10 +20,17 @@ run
 	RowanSample5_ApplicationSymbolDictionaries do: [:symDict |
 		stagingProjectDefinition
 			setSymbolDictName: symDict name asString forPackageNamed: 'Staging-', symDict name asString ].
+	stagingProjectDefinition
+			setSymbolDictName: 'Globals' forPackageNamed: 'Staging-Globals'.
+
 	projectTools load loadProjectDefinition: stagingProjectDefinition.
 
-	"Adopt symbol dicts into staging project"
+	"Read RowanSample5 project from disk --- and force all packages to be loaded into Globals"
 	diskProjectDefinition := Rowan projectTools create createProjectDefinitionFromSpecUrl: RowanSample5_Spec_Url.
+	diskProjectDefinition packageNames do: [:packageName |
+		diskProjectDefinition setSymbolDictName: 'Globals' forPackageNamed: packageName ].
+
+	"Adopt symbol dicts into staging project"
 	projectSetDefinitionToLoad := Rowan projectTools read readProjectSetForProjectDefinition: diskProjectDefinition.
 	UserGlobals
 		at: #RowanSample5_client_projectSetDefinitionToLoad
