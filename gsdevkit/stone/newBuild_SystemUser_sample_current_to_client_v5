@@ -1,12 +1,12 @@
 #
 #	load application using Rowan into a stone where the application already exists
 #
-#		this approach involves loading both Staging project and Application
-#		project in same project set defintion, avoiding the use of
-#		RwExistingVisitorAddingExistingClassNotification. However, in
-#		this particular implementation, the empty Staging-Globals package
-#		means that all the globals that were originally adopted will be 
-#		deleted from system ... oops
+#		This approach restricts the things adopted from Globals to only those
+#		application extension methods for the application itself ... when those 
+#		extension definitions are removed from the staging project (which is 
+#		included in the load as was done for _v2) they will be moved to any 
+#		new packages in the from SETT ...
+#
 #
 
 set -e
@@ -49,7 +49,7 @@ run
 %
 commit
 
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_client_v3.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_client_v5.gs
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_client.gs
