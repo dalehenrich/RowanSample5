@@ -38,16 +38,16 @@ run
 
 	"adopt Globals extension methods and all application symbol dictionaries"
 
-	projectDefinitionToLoad := projectSetDefinitionToLoad projectNamed: 'RowanSample5'.
+	projectDefinitionToLoad := projectSetDefinitionToLoad projectNamed: 'RowanSample5' ifAbsent: [].
 	projectDefinitionToLoad
 		packages values do: [:packageDefinition |
 			packageDefinition classExtensions values do: [:classExtension |
 				(Globals at: classExtension name asSymbol ifAbsent: []) ifNotNil: [
 					classExtension instanceMethodDefinitions valuesDo: [:methodDefinition |
-						Rowan packageTools 
+						Rowan packageTools adopt
 							adoptMethod: methodDefinition selector inClassNamed: classExtension name isMeta: false intoPackageNamed: 'Staging-Globals' ].
 					classExtension classMethodDefinitions valuesDo: [[:methodDefinition |
-						Rowan packageTools 
+						Rowan packageTools adopt
 							adoptMethod: methodDefinition selector inClassNamed: classExtension name isMeta: true intoPackageNamed: 'Staging-Globals']]]]].
 			
 	RowanSample5_ApplicationSymbolDictionaries do: [:dict |
