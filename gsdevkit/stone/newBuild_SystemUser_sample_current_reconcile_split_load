@@ -37,7 +37,7 @@ commit
   logout
 
 # install the Users group for "original application"
-  set user RowanSample5_UserCurator p swordfish
+  set user UserCurator p swordfish
   login
 
 run
@@ -52,7 +52,7 @@ commit
   logout
 
 # install the Globals group for "original application"
-  set user RowanSample5_GlobalsCurator p swordfish
+  set user GlobalsCurator p swordfish
   login
 
 run
@@ -91,7 +91,7 @@ commit
   logout
 
 # Install the non-Globals application code
-  set user RowanSample5_UserCurator p swordfish
+  set user UserCurator p swordfish
   login
 
 run
@@ -107,7 +107,7 @@ commit
   logout
 
 # install the extensions to Globals classes
-  set user RowanSample5_GlobalsCurator p swordfish
+  set user GlobalsCurator p swordfish
   login
 
 run

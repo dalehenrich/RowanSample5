@@ -13,7 +13,8 @@ run
     at: #'RowanSample5_devUserIds'
       put: 
       (((UserGlobals at: #'RowanSample5_userids') at: 'dev') copy
-        addAll: ((UserGlobals at: #'RowanSample5_userids') at: 'private')).
+        addAll: ((UserGlobals at: #'RowanSample5_userids') at: 'private');
+	yourself).
   UserGlobals
     at: #'RowanSample5_ApplicationCurator'
       put:  'ApplicationCurator';

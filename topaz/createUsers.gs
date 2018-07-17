@@ -43,7 +43,9 @@ run
     ifFalse: [AllGroups add: 'ApplicationModificationGroup' ].
   SystemRepository do: [:securityPolicy |
     (RowanSample5_devUserIds includes: securityPolicy owner userId)
-      ifTrue: [ securityPolicy group: 'ApplicationModificationGroup' authorization: #write ] ].
+      ifTrue: [ 
+	GsFile gciLogServer: 'application modification group ' , securityPolicy owner userId.
+	securityPolicy group: 'ApplicationModificationGroup' authorization: #write ] ].
 
   (AllUsers userWithId: RowanSample5_ApplicationCurator) 
     addGroup: 'GlobalsModificationGroup';
