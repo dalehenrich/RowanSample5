@@ -1,0 +1,33 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_blue',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'blue' : {
+				#packageNames : [
+					'RowanSample5-Blue1-Core',
+					'RowanSample5-Blue1-Extensions',
+					'RowanSample5-Blue2-Core',
+					'RowanSample5-Blue2-Extensions'
+					]
+				},
+			'blue_globals' : {
+				#packageNames : [
+					]
+				}
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-Blue1-Core' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Blue1-Extensions' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Blue2-Core' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Blue2-Extensions' : { 'symbolDictName' : 'Application' }
+					}
+				}
+			}
+		},
+	#comment : 'Blue user config'
+}

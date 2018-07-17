@@ -1,0 +1,33 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_red',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'red' : {
+				#packageNames : [
+					'RowanSample5-Red1-Core',
+					'RowanSample5-Red1-Extensions',
+					'RowanSample5-Red2-Core',
+					'RowanSample5-Red2-Extensions'
+					]
+				},
+			'red_globals' : {
+				#packageNames : [
+					]
+				}
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-Red1-Core' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Red1-Extensions' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Red2-Core' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Red2-Extensions' : { 'symbolDictName' : 'Application' }
+					}
+				}
+			}
+		},
+	#comment : 'Red user config'
+}

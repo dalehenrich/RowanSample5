@@ -1,0 +1,33 @@
+ RwNestedProjectLoadConfiguration{
+	#name : 'Load_yellow',
+	#version : '0.1.0',
+	#conditionalPackages : {
+		[ 'gemstone' ] : {
+			'yellow' : {
+				#packageNames : [
+					'RowanSample5-Yellow1-Core',
+					'RowanSample5-Yellow1-Extensions',
+					'RowanSample5-Yellow2-Core',
+					'RowanSample5-Yellow2-Extensions'
+					]
+				},
+			'yellow_globals' : {
+				#packageNames : [
+					]
+				}
+			}
+		},
+	#conditionalPackageMapSpecs : {
+		'gemstone' : {
+			'allusers' : {
+				#packageNameToPlatformPropertiesMap : {
+					'RowanSample5-Yellow1-Core' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Yellow1-Extensions' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Yellow2-Core' : { 'symbolDictName' : 'Application' },
+					'RowanSample5-Yellow2-Extensions' : { 'symbolDictName' : 'Application' }
+					}
+				}
+			}
+		},
+	#comment : 'Yellow user config'
+}

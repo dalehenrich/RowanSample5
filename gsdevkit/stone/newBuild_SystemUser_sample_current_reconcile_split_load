@@ -1,0 +1,59 @@
+#
+#	load application using Rowan into a stone where the application already exists
+#
+#		This approach restricts the things adopted from Globals to only those
+#		application extension methods for the application itself ... when those 
+#		extension definitions are removed from the staging project (which is 
+#		included in the load as was done for _v2) they will be moved to any 
+#		new packages in the from SETT ...
+#
+#
+
+set -e
+. defStone.env
+export vers="3.2.15"
+
+rm -rf *.log *.out
+
+newExtent -s product/bin/extent0.dbf $GEMSTONE_NAME
+
+$GS_HOME/shared/repos/Rowan/platforms/gemstone/topaz/3.2.15/installRowan $GEMSTONE_NAME
+
+startTopaz $GEMSTONE_NAME -l << EOF
+
+  iferr 1 stk
+  iferr 2 stack
+  iferr 3 exit
+
+  set user SystemUser p swordfish
+  login
+
+run
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_current.ston'
+%
+commit
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/defineGlobals.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createUsers.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_client.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject.gs
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_current.gs
+
+run
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_Users.ston'
+%
+commit
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_client_v5.gs
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_client.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
+
+  exit
+EOF
