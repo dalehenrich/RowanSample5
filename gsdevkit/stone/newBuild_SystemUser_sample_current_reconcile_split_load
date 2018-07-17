@@ -1,12 +1,6 @@
 #
 #	load application using Rowan into a stone where the application already exists
 #
-#		This approach restricts the things adopted from Globals to only those
-#		application extension methods for the application itself ... when those 
-#		extension definitions are removed from the staging project (which is 
-#		included in the load as was done for _v2) they will be moved to any 
-#		new packages in the from SETT ...
-#
 #
 
 set -e
@@ -25,6 +19,7 @@ startTopaz $GEMSTONE_NAME -l << EOF
   iferr 2 stack
   iferr 3 exit
 
+# install the "original application"
   set user SystemUser p swordfish
   login
 
@@ -42,6 +37,12 @@ commit
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_current.gs
 
+  logout
+
+# adopt and create symbol dictionaries for the new application structure
+  set user SystemUser p swordfish
+  login
+
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
@@ -50,8 +51,35 @@ run
 commit
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_client_v5.gs
-
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
+
+# Install the non-Globals application code
+  set user SystemUser p swordfish
+  login
+
+run
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_Users.ston'
+%
+commit
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_client.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
+
+  logout
+
+# install the extensions to Globals classes
+  set user SystemUser p swordfish
+  login
+
+run
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_Globals.ston'
+%
+commit
+
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_client.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
 
