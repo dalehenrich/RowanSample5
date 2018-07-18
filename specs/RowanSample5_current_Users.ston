@@ -1,5 +1,5 @@
  RwSimpleProjectSpecification{
-	#specName : 'RowanSample5',
+	#specName : 'RowanSample5_Users',
 	#version : '0.2.0',
 	#projectUrl : 'https://github.com/dalehenrich/RowanSample5',
 	#configsPath : 'current/configs',
