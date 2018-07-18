@@ -93,7 +93,11 @@ commit
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
-    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Users.ston'
+      put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Users.ston';
+    at: #'RowanSample5_Project_Name'
+      put: 'RowanSample5_Users';
+    yourself
+
 %
 commit
 
@@ -108,7 +112,11 @@ commit
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
-    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Globals.ston'
+      put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Globals.ston';
+    at: #'RowanSample5_Project_Name'
+      put: 'RowanSample5_Globals';
+    yourself
+
 %
 commit
 
@@ -123,7 +131,12 @@ commit
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
-    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Users.ston'
+      put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Users.ston';
+    at: #'RowanSample5_Root_Path'
+      put: '$ROWAN_PROJECTS_HOME/RowanSample5/';
+    at: #'RowanSample5_Project_Name'
+      put: 'RowanSample5_Users';
+    yourself
 %
 commit
 
@@ -139,7 +152,12 @@ commit
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
-    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Globals.ston'
+      put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Globals.ston';
+    at: #'RowanSample5_Root_Path'
+      put: '$ROWAN_PROJECTS_HOME/RowanSample5/';
+    at: #'RowanSample5_Project_Name'
+      put: 'RowanSample5_Globals';
+    yourself
 %
 commit
 

@@ -1,12 +1,19 @@
 
 run
 	| projectName stagingProjectDefinition projectTools packageNames loadedProject config diskProjectDefinition
-		projectSetDefinitionToLoad projectDefinitionToLoad |
+		projectSetDefinitionToLoad projectDefinitionToLoad isGlobalsUser |
  
+	isGlobalsUser := System myUserProfile userId = RowanSample5_GlobalsCurator.
+
 	projectName := 'Staging_RowanSample5'.
 	packageNames := {}.
-	RowanSample5_ApplicationSymbolDictionaries do: [:symDict |
-		packageNames add: 'Staging-', symDict name asString ].
+	isGlobalsUser
+		ifTrue: [ packageNames add: 'Staging-Globals' ]
+		ifFalse: [ 
+			RowanSample5_ApplicationSymbolDictionaries do: [:symDict |
+				symDict ~~ Globals
+					ifTrue: [ 
+						packageNames add: 'Staging-', symDict name asString ] ] ].
 
 	projectTools := Rowan projectTools.
 
@@ -16,9 +23,16 @@ run
 		packageNames: packageNames 
 		format: 'tonel'
 		root: '$ROWAN_PROJECTS_HOME'.
-	RowanSample5_ApplicationSymbolDictionaries do: [:symDict |
-		stagingProjectDefinition
-			setSymbolDictName: symDict name asString forPackageNamed: 'Staging-', symDict name asString ].
+	isGlobalsUser
+		ifTrue: 
+			[stagingProjectDefinition
+				setSymbolDictName: 'Globals' forPackageNamed: 'Staging-Globals' ]
+		ifFalse: [ 
+			RowanSample5_ApplicationSymbolDictionaries do: [:symDict |
+				symDict ~~ Globals
+					ifTrue: [
+						stagingProjectDefinition
+							setSymbolDictName: symDict name asString forPackageNamed: 'Staging-', symDict name asString ] ] ].
 
 	projectTools load loadProjectDefinition: stagingProjectDefinition.
 
@@ -35,8 +49,9 @@ run
 
 	"adopt Globals extension methods and all application symbol dictionaries"
 
-	projectDefinitionToLoad := projectSetDefinitionToLoad projectNamed: 'RowanSample5' ifAbsent: [].
-	projectDefinitionToLoad
+	projectDefinitionToLoad := projectSetDefinitionToLoad projectNamed: RowanSample5_Project_Name ifAbsent: [].
+	isGlobalsUser ifTrue: [ 
+		projectDefinitionToLoad
 		packages values do: [:packageDefinition |
 			packageDefinition classExtensions values do: [:classExtension |
 				(Globals at: classExtension name asSymbol ifAbsent: []) ifNotNil: [
@@ -45,14 +60,14 @@ run
 							adoptMethod: methodDefinition selector inClassNamed: classExtension name isMeta: false intoPackageNamed: 'Staging-Globals' ].
 					classExtension classMethodDefinitions valuesDo: [[:methodDefinition |
 						Rowan packageTools adopt
-							adoptMethod: methodDefinition selector inClassNamed: classExtension name isMeta: true intoPackageNamed: 'Staging-Globals']]]]].
-			
-	RowanSample5_ApplicationSymbolDictionaries do: [:dict |
-		dict name == #Globals
-			ifFalse: [ 
-				Rowan packageTools adopt
-					adoptSymbolDictionary: dict
-					intoPackageNamed: 'Staging-', dict name asString ] ].
+							adoptMethod: methodDefinition selector inClassNamed: classExtension name isMeta: true intoPackageNamed: 'Staging-Globals']]]]]]
+		ifFalse: [ 
+			RowanSample5_ApplicationSymbolDictionaries do: [:dict |
+			dict name == #Globals
+				ifFalse: [ 
+					Rowan packageTools adopt
+						adoptSymbolDictionary: dict
+						intoPackageNamed: 'Staging-', dict name asString ] ] ].
 
 	stagingProjectDefinition packages values do: [:pkgDefinition |
 	    pkgDefinition classDefinitions values do: [:classDefinition |
