@@ -89,7 +89,7 @@ run
 %
 commit
 
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_client_v5.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_split.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
 
   logout
