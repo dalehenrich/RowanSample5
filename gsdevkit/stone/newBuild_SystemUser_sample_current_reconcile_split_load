@@ -30,9 +30,9 @@ run
 %
 commit
 
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/defineGlobals.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/defineGlobals_split.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createUsers.gs
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_client.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_current_split.gs
 
   logout
 
@@ -79,7 +79,7 @@ commit
   logout
 
 # adopt and create symbol dictionaries for the new application structure
-  set user RowanSample5_GlobalsCurator p swordfish
+  set user ApplicationCurator p swordfish
   login
 
 run
