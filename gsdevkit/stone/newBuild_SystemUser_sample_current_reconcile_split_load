@@ -78,19 +78,41 @@ commit
 
   logout
 
-# adopt and create symbol dictionaries for the new application structure
-  set user ApplicationCurator p swordfish
+# create symbol dictionaries for the new application structure
+  set user SystemUser p swordfish
+  login
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_split.gs
+
+  logout
+
+# adopt user application code
+  set user UserCurator p swordfish
   login
 
 run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
-    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Application.ston'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Users.ston'
 %
 commit
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_split.gs
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/createSymbolDictionaries_monolithic.gs
+
+  logout
+
+# adopt globals application code
+  set user GlobalsCurator p swordfish
+  login
+
+run
+  UserGlobals
+    at: #'RowanSample5_Spec_Url'
+    put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Globals.ston'
+%
+commit
+
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/adopt_split.gs
 
   logout
 
