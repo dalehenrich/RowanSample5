@@ -138,6 +138,8 @@ run
       put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Users.ston';
     at: #'RowanSample5_Root_Path'
       put: '$ROWAN_PROJECTS_HOME/RowanSample5/';
+    at: #'Staging_RowanSample5_Project_Name'
+      put: 'Staging_RowanSample5_Users';
     at: #'RowanSample5_Project_Name'
       put: 'RowanSample5_Users';
     yourself
@@ -145,7 +147,7 @@ run
 commit
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_split.gs
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_split_staging.gs
 
   logout
 
@@ -159,6 +161,8 @@ run
       put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Globals.ston';
     at: #'RowanSample5_Root_Path'
       put: '$ROWAN_PROJECTS_HOME/RowanSample5/';
+    at: #'Staging_RowanSample5_Project_Name'
+      put: 'Staging_RowanSample5_Globals';
     at: #'RowanSample5_Project_Name'
       put: 'RowanSample5_Globals';
     yourself
@@ -166,7 +170,7 @@ run
 commit
 
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_split.gs
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_split_staging.gs
 
   exit
 EOF
