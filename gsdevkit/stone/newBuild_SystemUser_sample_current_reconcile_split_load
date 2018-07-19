@@ -94,6 +94,8 @@ run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
       put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Users.ston';
+    at: #'Staging_RowanSample5_Project_Name'
+      put: 'Staging_RowanSample5_Users';
     at: #'RowanSample5_Project_Name'
       put: 'RowanSample5_Users';
     yourself
@@ -113,6 +115,8 @@ run
   UserGlobals
     at: #'RowanSample5_Spec_Url'
       put: 'file:$ROWAN_PROJECTS_HOME/RowanSample5/specs/RowanSample5_reconcile_Globals.ston';
+    at: #'Staging_RowanSample5_Project_Name'
+      put: 'Staging_RowanSample5_Globals';
     at: #'RowanSample5_Project_Name'
       put: 'RowanSample5_Globals';
     yourself

@@ -5,7 +5,7 @@ run
  
 	isGlobalsUser := System myUserProfile userId = RowanSample5_GlobalsCurator.
 
-	projectName := 'Staging_RowanSample5'.
+	projectName := Staging_RowanSample5_Project_Name.
 	packageNames := {}.
 	isGlobalsUser
 		ifTrue: [ packageNames add: 'Staging-Globals' ]
