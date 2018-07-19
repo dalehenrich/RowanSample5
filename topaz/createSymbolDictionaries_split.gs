@@ -2,7 +2,7 @@ run
   | devSymDicts userId userProfile symbolList |
 
   devSymDicts := {}.
-  userId := RowanSample5_ApplicationCurator.
+  userId := RowanSample5_UserCurator.
   userProfile := AllUsers userWithId: userId.
   symbolList := userProfile symbolList.
   GsObjectSecurityPolicy 

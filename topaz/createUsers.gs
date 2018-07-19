@@ -54,7 +54,8 @@ run
   (AllUsers userWithId: RowanSample5_GlobalsCurator) 
 	addGroup: 'GlobalsModificationGroup';
 	addGroup: 'DataCuratorGroup'.
-  (AllUsers userWithId: RowanSample5_UserCurator) addGroup: 'ApplicationModificationGroup'.
+  (AllUsers userWithId: RowanSample5_UserCurator) 
+	addGroup: 'ApplicationModificationGroup'.
 %
 commit
 

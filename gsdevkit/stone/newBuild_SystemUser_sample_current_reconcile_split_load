@@ -144,7 +144,7 @@ run
 %
 commit
 
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_client.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_split.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
 
   logout
@@ -165,7 +165,7 @@ run
 %
 commit
 
-  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_client.gs
+  input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/loadProject_split.gs
   input $ROWAN_PROJECTS_HOME/RowanSample5/topaz/disown_staging.gs
 
   exit
